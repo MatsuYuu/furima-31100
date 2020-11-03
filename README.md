@@ -9,7 +9,7 @@
 |first_name        |string |null: false              |
 |last_name_kana    |string |null: false              |
 |first_name_kana   |string |null: false              |
-|birth_date_id     |date   |null: false              |
+|birth_date        |date   |null: false              |
 
 ### Association
 
@@ -26,7 +26,7 @@
 |status_id  |integer   |null: false                    |
 |burden_id  |integer   |null: false                    |
 |area_id    |integer   |null: false                    |
-|days_id    |integer   |null: false                    |
+|day_id     |integer   |null: false                    |
 |price      |integer   |null: false                    |
 |user       |references|null: false, foreign_key: true |
 
@@ -49,7 +49,7 @@
 
 - belongs_to :user
 - belongs_to :item
-- has_many   :addresses
+- has_one   :addresses
 
 
 
@@ -58,7 +58,7 @@
 |Column         |Type      |Options                        |
 |---------------|----------|-------------------------------|
 |postal_code    |string    |null: false                    |
-|prefectures_id |integer   |null: false                    |
+|prefecture_id  |integer   |null: false                    |
 |municipality   |string    |null: false                    |
 |house_number   |string    |null: false                    |
 |building_name  |string    |                               |
