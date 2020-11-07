@@ -16,10 +16,9 @@ class Item < ApplicationRecord
   end
 
   with_options presence: true, format: { with: /\A[0-9]+\z/ },
-    length: {maximum:9999999},length: {minimum:300} do
+    numericality: { greater_than_or_equal_to: 300 , less_than_or_equal_to: 9_999_999 } do
     validates :price
   end
 
-  
 
 end
