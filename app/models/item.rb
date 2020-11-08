@@ -5,7 +5,7 @@ class Item < ApplicationRecord
   belongs_to :status
   belongs_to :area
   belongs_to :burden
-  belongs_to :user ,optional: true
+  belongs_to :user 
   has_one_attached :image
 
   with_options presence: true do

@@ -6,9 +6,12 @@ const profitDom = document.getElementById("profit");
 
 priceInput.addEventListener("input", () => {
   const inputValue = priceInput.value;
-  console.log(inputValue);
   addTaxDom.innerHTML = Math.floor(inputValue / 10); 
   profitDom.innerHTML = Math.floor(inputValue - addTaxDom.innerHTML);
+
+  console.log(addTaxDom.innerHTML);
+  console.log(profitDom.innerHTML);
+  
 })
 
 })
