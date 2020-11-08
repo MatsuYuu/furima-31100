@@ -9,11 +9,6 @@ class Item < ApplicationRecord
   has_one_attached :image
 
   with_options presence: true do
-    validates :category_id
-    validates :day_id
-    validates :status_id
-    validates :area_id
-    validates :burden_id
     validates :image
     validates :name
     validates :explanation
