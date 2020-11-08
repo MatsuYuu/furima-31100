@@ -17,14 +17,15 @@ class Item < ApplicationRecord
     validates :image
     validates :name
     validates :explanation
+    validates :category_id, inclusion: {in: 2..14}
+    validates :day_id,      inclusion: {in: 2..4}
+    validates :status_id, inclusion: {in: 2..7}
+    validates :area_id, inclusion: {in: 2..48}
+    validates :burden_id, inclusion: {in: 2..3}
 
   end
 
-  validates :category_id, inclusion: {in: 2..14}
-  validates :day_id,      inclusion: {in: 2..4}
-  validates :status_id, inclusion: {in: 2..7}
-  validates :area_id, inclusion: {in: 2..48}
-  validates :burden_id, inclusion: {in: 2..3}
+  
 
 
   validates :price, presence: true,
