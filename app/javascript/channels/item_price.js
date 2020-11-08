@@ -9,7 +9,7 @@ priceInput.addEventListener("input", () => {
   addTaxDom.innerHTML = Math.floor(inputValue / 10); 
   profitDom.innerHTML = Math.floor(inputValue - addTaxDom.innerHTML);
 
-  
+  console.log
 })
 
 })
