@@ -19,14 +19,12 @@ class ItemsController < ApplicationController
     end
   end
 
-  def edit
-  end
-
-  def show
-  end
-
   def update
-    @item.update(item_params)
+    if @item.update(item_params)
+       redirect_to root_path
+    else
+      render :edit
+    end
   end
 
 
