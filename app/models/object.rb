@@ -1,4 +1,4 @@
-class Object < ApplicationRecord
+class UserObject
   include ActiveModel::Model
 
   attr_accessor :postal_code, :prefecture_id, :municipality, 
@@ -16,6 +16,6 @@ end
 
 
   def save
-    
+    Address.create(postal_code: postal_code, prefecture_id: prefecture_id, municipality: municipality, house_number: house_number, building_name: building_name, phone_number: phone_number, user_id: user_id)
   end
 end
