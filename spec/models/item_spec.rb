@@ -36,7 +36,7 @@ RSpec.describe Item, type: :model do
       it 'category_idが1だと登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category is not included in the list")
+        expect(@item.errors.full_messages).to include('Category is not included in the list')
       end
       it 'status_idが空では登録できない' do
         @item.status_id = ''
@@ -46,7 +46,7 @@ RSpec.describe Item, type: :model do
       it 'status_idが1では登録できない' do
         @item.status_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Status is not included in the list")
+        expect(@item.errors.full_messages).to include('Status is not included in the list')
       end
       it 'burden_idが空では登録できない' do
         @item.burden_id = ''
@@ -56,7 +56,7 @@ RSpec.describe Item, type: :model do
       it 'burden_idが1では登録できない' do
         @item.burden_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Burden is not included in the list")
+        expect(@item.errors.full_messages).to include('Burden is not included in the list')
       end
       it 'area_idが空では登録できない' do
         @item.area_id = ''
@@ -66,7 +66,7 @@ RSpec.describe Item, type: :model do
       it 'area_idが1では登録できない' do
         @item.area_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Area is not included in the list")
+        expect(@item.errors.full_messages).to include('Area is not included in the list')
       end
       it 'day_idが空では登録できない' do
         @item.day_id = ''
@@ -76,7 +76,7 @@ RSpec.describe Item, type: :model do
       it 'day_idが1では登録できない' do
         @item.day_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Day is not included in the list")
+        expect(@item.errors.full_messages).to include('Day is not included in the list')
       end
       it 'priceが空では登録できない' do
         @item.price = ''

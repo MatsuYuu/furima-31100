@@ -1,4 +1,4 @@
-window.addEventListener('load', function(){
+function pulldown() {
 
 const priceInput = document.getElementById("item-price");
 const addTaxDom = document.getElementById("add-tax-price");
@@ -9,7 +9,7 @@ priceInput.addEventListener("input", () => {
   addTaxDom.innerHTML = Math.floor(inputValue / 10); 
   profitDom.innerHTML = Math.floor(inputValue - addTaxDom.innerHTML);
 
-  
 })
 
-})
+}
+window.addEventListener('load',  pulldown)
