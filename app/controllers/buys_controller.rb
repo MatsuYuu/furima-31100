@@ -1,11 +1,11 @@
 class BuysController < ApplicationController
 
   def index
-    @user_object = UserObject.new
+    @user_object = BuyItem.new
   end
 
   def create
-    @user_object = UserObject.new(object_params)
+   @user_object = BuyItem.new(object_params)
     if  @user_object.valid?
         @user_object.save
         redirect_to action: :index
