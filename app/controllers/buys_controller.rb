@@ -1,23 +1,23 @@
 class BuysController < ApplicationController
 
   def index
-    @user_object = BuyItem.new
+    @user_buyitem = BuyItem.new
   end
 
   def create
-   @user_object = BuyItem.new(object_params)
-    if  @user_object.valid?
-        @user_object.save
+    @user_buyitem = BuyItem.new(buyitem_params)
+    if  @user_buyitem.valid?
+        @user_buyitem.save
         redirect_to action: :index
     else
-        redirect_to root_path
+        render action: :index
     end
   end
 
   private
 
-  def object_params
-    params.require(:user_object).permit(:postal_code, :prefecture_id, :municipality, :house_number, :building_name, :phone_number)
+  def buyitem_params
+    params.permit(:postal_code, :prefecture_id, :municipality, :house_number, :building_name, :phone_number)
   end
 end
 
