@@ -1,13 +1,13 @@
 class BuysController < ApplicationController
 
   def index
-    @user_buyitem = BuyItem.new
+    @buy_item = BuyItem.new
   end
 
   def create
-    @user_buyitem = BuyItem.new(buyitem_params)
-    if  @user_buyitem.valid?
-        @user_buyitem.save
+    @buy_item = BuyItem.new(buyitem_params)
+    if  @buy_item.valid?
+        @buy_item.save
         redirect_to action: :index
     else
         render action: :index
