@@ -66,7 +66,7 @@ RSpec.describe BuyItem, type: :model do
       it 'phone_numberにハイフンがあると保存できない' do
         @buy_item.phone_number = '080-1234-5678'
         @buy_item.valid?
-        expect(@buy_item.errors.full_messages).to include("Phone number is invalid. NOt Include hyphen(-)")
+        expect(@buy_item.errors.full_messages).to include("Phone number is invalid. Not Include hyphen(-)")
       end
       it 'phone_numberは11桁以内でないと保存できない' do
         @buy_item.phone_number = '080123456789'

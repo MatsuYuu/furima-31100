@@ -15,7 +15,7 @@ class BuyItem
   end
 
    validates :postal_code,   format: {with: /\A[0-9]{3}-[0-9]{4}\z/}
-   validates :phone_number,  format: {with: /\A\d{10,11}\z/, message: "is invalid. NOt Include hyphen(-)"}
+   validates :phone_number,  format: {with: /\A\d{10,11}\z/, message: "is invalid. Not Include hyphen(-)"}
    validates :phone_number,  format: {with: /\A\d{10,11}\z/, message: "is invalid. Within 11 digits"}
 
   def save

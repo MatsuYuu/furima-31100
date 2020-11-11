@@ -18,9 +18,9 @@ class Item < ApplicationRecord
     validates :status_id, inclusion: { in: 2..7 }
     validates :area_id, inclusion: { in: 2..48 }
     validates :burden_id, inclusion: { in: 2..3 }
+    validates :price, format: { with: /\A[0-9]+\z/ }
   end
 
-  validates :price, presence: true,
-                    format: { with: /\A[0-9]+\z/ },
-                    numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999 }
+  validates :price, numericality: { greater_than_or_equal_to: 300, messeage:'Price must be greater than or equal to 300'}
+  validates :price, numericality: { less_than_or_equal_to: 9_999_999, messeage: 'Price must be less than or equal to 9999999' }
 end
