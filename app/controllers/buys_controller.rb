@@ -6,12 +6,13 @@ class BuysController < ApplicationController
   end
 
   def create
+    binding.pry
     @buy_item = BuyItem.new(buyitem_params)
     @item = Item.find(params[:item_id])
     if  @buy_item.valid?
         @buy_item.save
         @item.save
-        redirect_to action: :index
+        redirect_to root_path
     else
         render action: :index
     end
@@ -20,7 +21,7 @@ class BuysController < ApplicationController
   private
 
   def buyitem_params
-    params.permit(:postal_code, :prefecture_id, :municipality, :house_number, :building_name, :phone_number)
+    params.require(:buy_item).permit(:postal_code, :prefecture_id, :municipality, :house_number, :building_name, :phone_number).merge(user_id: current_user.id, item_id: params[:item_id])
   end
 end
 

@@ -32,7 +32,7 @@ RSpec.describe BuyItem, type: :model do
       it 'prefecture_idが1だと保存できないこと' do
         @buy_item.prefecture_id = 1
         @buy_item.valid?
-        expect(@buy_item.errors.full_messages).to include("Prefecture is not included in the list")
+        expect(@buy_item.errors.full_messages).to include("Prefecture can't be blank")
       end
       it 'municipalityが空だと保存できないこと' do
         @buy_item.municipality = nil
