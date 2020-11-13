@@ -1,9 +1,15 @@
 class BuysController < ApplicationController
   def index
-    redirect_to root_path unless user_signed_in?
+     unless user_signed_in?
+      redirect_to '/users/sign_in' 
+     end
     @item = Item.find(params[:item_id])
     @buy_item = BuyItem.new
-    redirect_to root_path if @item.buy.present? || @item.user_id == current_user.id
+    if @item.buy.present? 
+      redirect_to root_path
+    elsif @item.user_id == current_user.id
+      redirect_to root_path
+    end
   end
 
   def create
