@@ -7,9 +7,7 @@ class ItemsController < ApplicationController
   end
 
   def new
-    unless user_signed_in?
-      redirect_to '/users/sign_in'
-     end
+    redirect_to '/users/sign_in' unless user_signed_in?
     @item = Item.new
   end
 
@@ -23,17 +21,13 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    unless user_signed_in?
-     redirect_to '/users/sign_in'
-    end
-    if @item.buy.present?
-      redirect_to root_path
-    end
+    redirect_to '/users/sign_in' unless user_signed_in?
+    redirect_to root_path if @item.buy.present?
   end
 
   def update
     if @item.update(item_params)
-       redirect_to root_path
+      redirect_to root_path
     else
       render :edit
     end
@@ -41,10 +35,10 @@ class ItemsController < ApplicationController
 
   def destroy
     if @item.user_id == current_user.id
-       @item.destroy
-       redirect_to root_path
+      @item.destroy
+      redirect_to root_path
     else
-       render root_path
+      render root_path
     end
   end
 

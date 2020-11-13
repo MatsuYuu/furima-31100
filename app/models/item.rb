@@ -21,6 +21,6 @@ class Item < ApplicationRecord
     validates :price, format: { with: /\A[0-9]+\z/ }
   end
 
-  validates :price, numericality: { greater_than_or_equal_to: 300, messeage:'Price must be greater than or equal to 300'}
+  validates :price, numericality: { greater_than_or_equal_to: 300, messeage: 'Price must be greater than or equal to 300' }
   validates :price, numericality: { less_than_or_equal_to: 9_999_999, messeage: 'Price must be less than or equal to 9999999' }
 end

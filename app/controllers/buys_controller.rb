@@ -1,26 +1,21 @@
 class BuysController < ApplicationController
-
   def index
-    unless user_signed_in?
-      redirect_to root_path
-    end
+    redirect_to root_path unless user_signed_in?
     @item = Item.find(params[:item_id])
     @buy_item = BuyItem.new
-    if @item.buy.present? || @item.user_id == current_user.id
-      redirect_to root_path
-    end
+    redirect_to root_path if @item.buy.present? || @item.user_id == current_user.id
   end
 
   def create
     @buy_item = BuyItem.new(buyitem_params)
     @item = Item.find(params[:item_id])
-    if  @buy_item.valid?
-        pay_item
-        @buy_item.save
-        @item.save
-        redirect_to root_path
+    if @buy_item.valid?
+      pay_item
+      @buy_item.save
+      @item.save
+      redirect_to root_path
     else
-        render action: :index
+      render action: :index
     end
   end
 
@@ -31,14 +26,11 @@ class BuysController < ApplicationController
   end
 
   def pay_item
-    Payjp.api_key = ENV["PAYJP_SECRET_KEY"] 
+    Payjp.api_key = ENV['PAYJP_SECRET_KEY']
     Payjp::Charge.create(
       amount: Item.find(params[:item_id]).price,
-      card: buyitem_params[:token],    
-      currency: 'jpy'                
+      card: buyitem_params[:token],
+      currency: 'jpy'
     )
   end
-
 end
-
-
