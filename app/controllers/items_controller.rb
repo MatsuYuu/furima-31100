@@ -52,6 +52,6 @@ class ItemsController < ApplicationController
   end
 
   def set_redirect
-    redirect_to redirect_to new_user_session unless user_signed_in?
+    redirect_to redirect_to new_user_session_path unless user_signed_in?
   end
 end

@@ -3,7 +3,7 @@ class BuysController < ApplicationController
 
   def index
      unless user_signed_in?
-      redirect_to new_user_session
+      redirect_to new_user_session_path
      end
     @buy_item = BuyItem.new
     if @item.buy.present? or @item.user_id == current_user.id
