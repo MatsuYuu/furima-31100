@@ -9,6 +9,11 @@ RSpec.describe BuyItem, type: :model do
     it 'すべての値が正しく入力されていれば保存できること' do
       expect(@buy_item).to be_valid
     end
+    it 'building_nameは空でも保存できること' do
+      @buy_item.building_name = nil
+      expect(@buy_item).to be_valid
+    end
+    
     it 'postal_codeが空だと保存できないこと' do
       @buy_item.postal_code = nil
       @buy_item.valid?
@@ -48,10 +53,6 @@ RSpec.describe BuyItem, type: :model do
       @buy_item.house_number = nil
       @buy_item.valid?
       expect(@buy_item.errors.full_messages).to include("House number can't be blank")
-    end
-    it 'building_nameは空でも保存できること' do
-      @buy_item.building_name = nil
-      expect(@buy_item).to be_valid
     end
     it 'phone_numberが空だと保存できないこと' do
       @buy_item.phone_number = nil

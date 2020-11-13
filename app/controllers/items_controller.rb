@@ -1,13 +1,13 @@
 class ItemsController < ApplicationController
   before_action :authenticate_user!, only: [:new, :destroy]
   before_action :set_item, only: [:edit, :show, :update, :destroy]
+  before_action :set_redirect, only: [:new, :edit]
 
   def index
     @items = Item.order('created_at DESC')
   end
 
   def new
-    redirect_to '/users/sign_in' unless user_signed_in?
     @item = Item.new
   end
 
@@ -21,7 +21,6 @@ class ItemsController < ApplicationController
   end
 
   def edit
-    redirect_to '/users/sign_in' unless user_signed_in?
     redirect_to root_path if @item.buy.present?
   end
 
@@ -50,5 +49,9 @@ class ItemsController < ApplicationController
 
   def set_item
     @item = Item.find(params[:id])
+  end
+
+  def set_redirect
+    redirect_to redirect_to new_user_session unless user_signed_in?
   end
 end

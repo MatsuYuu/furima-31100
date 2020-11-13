@@ -1,24 +1,21 @@
 class BuysController < ApplicationController
+  before_action :set_item, only: [:index, :create]
+
   def index
      unless user_signed_in?
-      redirect_to '/users/sign_in' 
+      redirect_to new_user_session
      end
-    @item = Item.find(params[:item_id])
     @buy_item = BuyItem.new
-    if @item.buy.present? 
-      redirect_to root_path
-    elsif @item.user_id == current_user.id
+    if @item.buy.present? or @item.user_id == current_user.id
       redirect_to root_path
     end
   end
 
   def create
     @buy_item = BuyItem.new(buyitem_params)
-    @item = Item.find(params[:item_id])
     if @buy_item.valid?
       pay_item
       @buy_item.save
-      @item.save
       redirect_to root_path
     else
       render action: :index
@@ -38,5 +35,9 @@ class BuysController < ApplicationController
       card: buyitem_params[:token],
       currency: 'jpy'
     )
+  end
+
+  def set_item
+    @item = Item.find(params[:id])
   end
 end
