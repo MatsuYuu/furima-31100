@@ -7,6 +7,9 @@ class ItemsController < ApplicationController
   end
 
   def new
+    unless user_signed_in?
+      redirect_to '/users/sign_in'
+     end
     @item = Item.new
   end
 
@@ -16,6 +19,15 @@ class ItemsController < ApplicationController
       redirect_to root_path
     else
       render :new
+    end
+  end
+
+  def edit
+    unless user_signed_in?
+     redirect_to '/users/sign_in'
+    end
+    if @item.buy.present?
+      redirect_to root_path
     end
   end
 
