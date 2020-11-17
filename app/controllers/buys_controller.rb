@@ -5,7 +5,6 @@ class BuysController < ApplicationController
   def index
      if @item.buy.present? || @item.user_id == current_user.id
       redirect_to root_path
-     end
     @buy_item = BuyItem.new
   end
 
